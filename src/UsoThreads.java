@@ -185,7 +185,15 @@ class MarcoRebote extends JFrame{
 				pelota.mueve_pelota(lamina.getBounds());
 				
 				lamina.paint(lamina.getGraphics());
-				
+
+				try {
+					//la aplicación al ser monotarea, paramos la ejecución durante 4 miliseg
+					Thread.sleep(4);
+				} catch (InterruptedException e) {
+					throw new RuntimeException(e);
+				}
+
+
 			}
 			
 		
