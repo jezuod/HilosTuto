@@ -16,7 +16,7 @@ public class UsoThreads {
 		marco.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		marco.setVisible(true);
-
+		System.out.println("Ejecución");
 	}
 
 }
