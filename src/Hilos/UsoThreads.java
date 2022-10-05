@@ -1,3 +1,5 @@
+package Hilos;
+
 import java.awt.geom.*;
 
 import javax.swing.*;
@@ -10,7 +12,8 @@ public class UsoThreads {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
+
+
 		JFrame marco=new MarcoRebote();
 		
 		marco.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -179,22 +182,11 @@ class MarcoRebote extends JFrame{
 			Pelota pelota=new Pelota();
 			
 			lamina.add(pelota);
-			
-			for (int i=1; i<=3000; i++){
-				
-				pelota.mueve_pelota(lamina.getBounds());
-				
-				lamina.paint(lamina.getGraphics());
 
-				try {
-					//la aplicación al ser monotarea, paramos la ejecución durante 4 miliseg
-					Thread.sleep(4);
-				} catch (InterruptedException e) {
-					throw new RuntimeException(e);
-				}
+			Runnable r=new PelotaHilos(pelota,lamina);
+			Thread t=new Thread(r);
+			t.start();
 
-
-			}
 			
 		
 		
