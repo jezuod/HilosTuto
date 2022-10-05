@@ -9,12 +9,14 @@ public class PelotaHilos implements Runnable{
 
 
     public void run() {
-        for (int i=1; i<=3000; i++){
-
+        //for (int i=1; i<=3000; i++){
+       // while(!Thread.interrupted())
+        System.out.println("\nEstado Hilo: "+Thread.currentThread().isInterrupted());
+        while((!Thread.currentThread().isInterrupted()))
             pelota.mueve_pelota(component.getBounds());
 
             component.paint(component.getGraphics());
-
+        /*
             try {
                 //la aplicación al ser monotarea, paramos la ejecución durante 4 miliseg
                 Thread.sleep(4);
@@ -23,7 +25,8 @@ public class PelotaHilos implements Runnable{
             }
 
 
-        }
+        */
+        System.out.println("\nEstado Hilo: "+Thread.currentThread().isInterrupted());
 
     }
 

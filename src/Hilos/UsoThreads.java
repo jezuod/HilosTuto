@@ -125,7 +125,7 @@ class LaminaPelota extends JPanel{
 //Marco con lámina y botones------------------------------------------------------------------------------
 
 class MarcoRebote extends JFrame{
-	
+	Thread t;
 	public MarcoRebote(){
 		
 		setBounds(600,300,400,350);
@@ -157,6 +157,14 @@ class MarcoRebote extends JFrame{
 			}
 			
 		});
+		ponerBoton(laminaBotones, "Pausar!", new ActionListener(){
+
+			public void actionPerformed(ActionEvent evento){
+
+				detener();
+			}
+
+		});
 		
 		add(laminaBotones, BorderLayout.SOUTH);
 	}
@@ -184,14 +192,19 @@ class MarcoRebote extends JFrame{
 			lamina.add(pelota);
 
 			Runnable r=new PelotaHilos(pelota,lamina);
-			Thread t=new Thread(r);
+			//Thread t=new Thread(r);
+			t=new Thread(r);
 			t.start();
 
 			
 		
 		
 	}
-	
+	public void detener()
+	{
+		
+		t.interrupt();
+	}
 	private LaminaPelota lamina;
 	
 	
